@@ -1,0 +1,43 @@
+import React from "react";
+
+const List = props => (
+  <ul>
+    {props.items.map((item, index) => (
+      <li key={index}>{item}</li>
+    ))}
+  </ul>
+);
+
+export default List;
+
+___________________________________________
+
+import React, { Component } from "react";
+
+class List extends Component {
+  removeItem(item, i) {
+    this.props.removeTodo(item, i);
+  }
+
+  render() {
+    return (
+      <ul>
+        {this.props.todos.map((todo, i) => {
+          return (
+            <li
+              onClick={() => {
+                this.removeItem(todo, i);
+              }}
+              key={i}
+            >
+              {todo}
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
+}
+
+export default List;
+
